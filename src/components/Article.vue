@@ -4,6 +4,7 @@
     <img class="thumbnail" v-else src="../assets/reddit-logo.png" />
     <span class="title">
       {{ article.data.title }}
+    <span class="domain">({{ article.data.domain }})</span>
     </span>
   </a>
 </template>
@@ -19,11 +20,17 @@
   .link {
     display: flex;
     text-decoration: none;
-    color: #333;
+    font-weight: bold;
+    color: #0d0987;
   }
   .title {
     padding: 5px;
     text-align: left;
+  }
+  .domain {
+    font-weight: normal;
+    color: #000;
+    font-size: .7em;
   }
   .thumbnail {
     width: 50px;
