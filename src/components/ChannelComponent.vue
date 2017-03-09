@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import ArticleComponent from './ArticleComponent';
+  import ArticleComponent from '@/components/ArticleComponent';
 
   export default {
     name: 'ChannelComponent',

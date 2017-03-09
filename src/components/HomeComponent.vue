@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import ChannelComponent from './ChannelComponent';
+import ChannelComponent from '@/components/ChannelComponent';
 
 export default {
   name: 'HomeComponent',
