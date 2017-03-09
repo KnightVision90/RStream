@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import ChannelComponent from './Channel';
+import ChannelComponent from './ChannelComponent';
 
 export default {
-  name: 'home',
+  name: 'HomeComponent',
   data() {
     return {
       newStream: '',

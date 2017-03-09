@@ -15,10 +15,10 @@
 </template>
 
 <script>
-  import ArticleComponent from './Article';
+  import ArticleComponent from './ArticleComponent';
 
   export default {
-    name: 'Channel',
+    name: 'ChannelComponent',
     data() {
       return {
         stream: null,

@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'Article',
+    name: 'ArticleComponent',
     props: ['article'],
   };
 </script>
