@@ -1,6 +1,11 @@
 <template>
   <div class="channel" v-if="stream">
-    <h2 :class="['channel-name', status]">{{ channel }}</h2>
+    <h2 :class="['channel-name', status]">
+      <a :href="subreddit" target="_blank">
+        {{ channel }}
+      </a>
+      <span class="close" @click="$parent.removeStream(index)">X</span>
+    </h2>
     <ul class="channel-list">
       <li class="article" v-for="article in stream.data.children">
         <article-component :article="article"></article-component>
@@ -20,9 +25,14 @@
         status: '',
       };
     },
+    computed: {
+      subreddit() {
+        return `https://www.reddit.com/r/${this.channel}`;
+      },
+    },
     methods: {
       updateStream() {
-        this.$http.get(`https://www.reddit.com/r/${this.channel}/new.json`)
+        this.$http.get(`${this.subreddit}/new.json`)
           .then(
             (resp) => {
               this.stream = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
@@ -42,8 +52,8 @@
     },
     props: [
       'channel',
+      'index',
     ],
-
   };
 </script>
 
@@ -54,6 +64,15 @@
     box-sizing: border-box;
     border: 2px solid #333;
   }
+  .close {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+  }
+  .close:hover {
+    color: #666;
+  }
   .channel-name {
     border-bottom: 1px solid #333;
     text-transform: capitalize;
@@ -61,17 +80,24 @@
     padding: 2px;
     text-align: center;
   }
+  .channel-name a {
+    text-decoration: none;
+    color: #333;
+  }
   .channel-name.success {
     background-color: #5ACCFF;
   }
   .channel-name.error {
     background-color: #FF9C9A;
   }
+  .channel-name.warning {
+    background-color: #dfff56;
+  }
   .channel-list {
     padding: 5px;
     list-style: none;
-    height: 500px;
-    overflow-y: scroll;
+    height: 300px;
+    overflow-y: auto;
     margin: 0;
   }
 
