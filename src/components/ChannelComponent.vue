@@ -1,6 +1,9 @@
 <template>
   <div class="channel" v-if="stream">
     <h2 :class="['channel-name', status]">
+      <select v-model="currentType" @change="updateStream" class="stream-type">
+        <option v-for="type in streamTypes" :value="type">{{ type }}</option>
+      </select>
       <a :href="subreddit" target="_blank">
         {{ channel }}
       </a>
@@ -20,19 +23,27 @@
   export default {
     name: 'ChannelComponent',
     data() {
+      const streamTypes = [
+        'hot',
+        'new',
+        'top',
+      ];
+
       return {
+        streamTypes,
         stream: null,
         status: '',
+        currentType: streamTypes[0],
       };
     },
     computed: {
       subreddit() {
-        return `https://www.reddit.com/r/${this.channel}`;
+        return `https://www.reddit.com/r/${this.channel}/${this.currentType}`;
       },
     },
     methods: {
       updateStream() {
-        this.$http.get(`${this.subreddit}/new.json`)
+        this.$http.get(`${this.subreddit}.json`)
           .then(
             (resp) => {
               this.stream = typeof resp.data === 'string' ? JSON.parse(resp.data) : resp.data;
@@ -105,6 +116,12 @@
     vertical-align: top;
     border-bottom: 1px solid #333;
     padding: 5px 0;
+  }
+
+  .stream-type {
+    float: left;
+    padding: 4px 1px;
+    text-transform: capitalize;
   }
 
   @media screen and (min-width: 700px) {
