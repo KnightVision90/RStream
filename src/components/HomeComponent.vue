@@ -54,10 +54,8 @@ export default {
     },
     submitSubreddit() {
       const value = this.newStream.toLowerCase();
-      if (this.streams.indexOf(value) === -1) {
-        this.streams.push(value);
-        this.saveStreams();
-      }
+      this.streams.push(value);
+      this.saveStreams();
       this.newStream = '';
     },
   },
