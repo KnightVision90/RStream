@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <h1>RStream</h1>
-    <div class="container">
+    <div class="channels-container">
       <channel-component v-for="(stream, key) in streams" :index="key" :key="stream" :channel="stream"></channel-component>
       <div class="channel add-channel">
         <h2 class="channel-name warning">Add Channel</h2>
@@ -65,40 +64,3 @@ export default {
 };
 </script>
 
-<style>
-  h1 {
-    margin: 10px 0;
-    text-align: center;
-    color: #2c3e50;
-  }
-  h3 {
-    margin: 5px 0;
-    text-align: center;
-  }
-
-  .container {
-    display: inline-flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .add-channel input {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .add-channel button {
-    margin-top: 5px;
-    display: block;
-    width: 100%;
-    padding: 5px;
-    background-color: #88FF88;
-    border: 1px solid #000;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-</style>

@@ -1,20 +1,60 @@
 <template>
-  <div class="channel" v-if="stream">
-    <h2 :class="['channel-name', status]">
-      <select v-model="currentType" @change="updateStream" class="stream-type">
-        <option v-for="type in streamTypes" :value="type">{{ type }}</option>
-      </select>
-      <a :href="subreddit" target="_blank">
-        {{ channel }}
-      </a>
-      <span class="close" @click="$parent.removeStream(index)">X</span>
-    </h2>
-    <ul class="channel-list">
-      <li class="article" v-for="article in stream.data.children">
-        <article-component :article="article"></article-component>
-      </li>
-    </ul>
-  </div>
+  <v-card class="channel" v-if="stream">
+    <v-card-row class="green darken-1">
+      <v-card-title>
+        <span class="white--text">{{ channel }}</span>
+        <v-spacer></v-spacer>
+        <div>
+          <v-menu id="marriot" bottom left origin="top right">
+            <v-btn icon="icon" slot="activator" class="white--text">
+              <v-icon>more_vert</v-icon>
+            </v-btn>
+            <v-list>
+              <v-list-item>
+                <v-list-tile>
+                  <v-list-tile-title>Change Type</v-list-tile-title>
+                </v-list-tile>
+              </v-list-item>
+              <v-list-item>
+                <v-list-tile>
+                  <v-list-tile-title>Edit Subreddit</v-list-tile-title>
+                </v-list-tile>
+              </v-list-item>
+              <v-list-item>
+                <v-list-tile>
+                  <v-list-tile-title @click="$parent.removeStream(index)">Remove Card</v-list-tile-title>
+                </v-list-tile>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
+      </v-card-title>
+    </v-card-row>
+    <v-card-text>
+      <v-list class="article-list" three-line>
+        <v-list-item v-for="(article, index) in stream.data.children" :key="article.id">
+          <article-component :article="article"></article-component>
+          <v-divider v-if="index + 1 < stream.data.children.length"></v-divider>
+        </v-list-item>
+      </v-list>
+    </v-card-text>
+  </v-card>
+  <!--<div class="channel" v-if="stream">-->
+    <!--<h2 :class="['channel-name', status]">-->
+      <!--<select v-model="currentType" @change="updateStream" class="stream-type">-->
+        <!--<option v-for="type in streamTypes" :value="type">{{ type }}</option>-->
+      <!--</select>-->
+      <!--<a :href="subreddit" target="_blank">-->
+        <!--{{ channel }}-->
+      <!--</a>-->
+      <!--<span class="close" @click="$parent.removeStream(index)">X</span>-->
+    <!--</h2>-->
+    <!--<ul class="channel-list">-->
+      <!--<li class="article" v-for="article in stream.data.children">-->
+        <!--<article-component :article="article"></article-component>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
 </template>
 
 <script>
@@ -67,73 +107,3 @@
     ],
   };
 </script>
-
-<style>
-  .channel {
-    width: 100%;
-    margin: 0 0 1%;
-    box-sizing: border-box;
-    border: 2px solid #333;
-  }
-  .close {
-    cursor: pointer;
-    display: inline-block;
-    float: right;
-    margin-right: 5px;
-  }
-  .close:hover {
-    color: #666;
-  }
-  .channel-name {
-    border-bottom: 1px solid #333;
-    text-transform: capitalize;
-    margin: 0;
-    padding: 2px;
-    text-align: center;
-  }
-  .channel-name a {
-    text-decoration: none;
-    color: #333;
-  }
-  .channel-name.success {
-    background-color: #5ACCFF;
-  }
-  .channel-name.error {
-    background-color: #FF9C9A;
-  }
-  .channel-name.warning {
-    background-color: #dfff56;
-  }
-  .channel-list {
-    padding: 5px;
-    list-style: none;
-    height: 300px;
-    overflow-y: auto;
-    margin: 0;
-  }
-
-  .article {
-    vertical-align: top;
-    border-bottom: 1px solid #333;
-    padding: 5px 0;
-  }
-
-  .stream-type {
-    float: left;
-    padding: 4px 1px;
-    text-transform: capitalize;
-  }
-
-  @media screen and (min-width: 700px) {
-    .channel {
-      width: 48%;
-      margin: 0 1% 1%;
-    }
-  }
-
-  @media screen and (min-width: 1000px) {
-    .channel {
-      width: 31%;
-    }
-  }
-</style>
