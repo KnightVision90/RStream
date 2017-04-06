@@ -1,5 +1,5 @@
 <template>
-  <v-list-tile :href="article.data.url">
+  <v-list-tile :href="article.data.url" target="_blank">
     <v-list-tile-content>
       <v-list-tile-title>{{ article.data.title }}</v-list-tile-title>
     </v-list-tile-content>
