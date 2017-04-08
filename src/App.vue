@@ -36,5 +36,5 @@ export default {
 
 <style lang="stylus">
   @import '../node_modules/vuetify/src/stylus/main.styl';
-  @import './css/main.css';
+  @import './css/main.scss';
 </style>

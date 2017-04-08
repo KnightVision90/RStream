@@ -1,7 +1,13 @@
 <template>
-  <v-list-tile :href="article.data.url" target="_blank">
+  <v-list-tile :href="article.data.url" target="_blank" class="article" avatar>
+    <v-list-tile-avatar>
+      <img :src="imageSource" :alt="article.data.title" class="article-image">
+    </v-list-tile-avatar>
     <v-list-tile-content>
-      <v-list-tile-title>{{ article.data.title }}</v-list-tile-title>
+      <v-list-tile-title class="article-headline">
+        {{ article.data.title }}
+        <span class="grey--text">({{ article.data.domain }})</span>
+      </v-list-tile-title>
     </v-list-tile-content>
   </v-list-tile>
   <!--<a :href="article.data.url" class="link" target="_blank">-->
@@ -18,5 +24,12 @@
   export default {
     name: 'ArticleComponent',
     props: ['article'],
+    computed: {
+      imageSource() {
+        return (['default', 'self', ''].indexOf(this.article.data.thumbnail) === -1) && this.article.data.thumbnail !== 'spoiler' ?
+            this.article.data.thumbnail :
+            '/static/reddit-logo.png';
+      },
+    },
   };
 </script>

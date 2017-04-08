@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div class="channels-container">
-      <channel-component v-for="(stream, key) in streams" :index="key" :key="stream" :channel="stream"></channel-component>
+      <v-container fluid="fluid">
+        <v-row class="px-2">
+          <channel-component v-for="(stream, key) in streams" :index="key" :key="stream" :channel="stream"></channel-component>
+        </v-row>
+      </v-container>
+
       <div class="channel add-channel">
         <h2 class="channel-name warning">Add Channel</h2>
         <ul class="channel-list">
