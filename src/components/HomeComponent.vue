@@ -3,66 +3,26 @@
     <div class="channels-container">
       <v-container fluid="fluid">
         <v-row class="px-2">
-          <channel-component v-for="(stream, key) in streams" :index="key" :key="stream" :channel="stream"></channel-component>
+          <subreddit-component v-for="(stream, key) in streams" :index="key" :key="stream" :subreddit="stream"></subreddit-component>
         </v-row>
       </v-container>
-
-      <div class="channel add-channel">
-        <h2 class="channel-name warning">Add Channel</h2>
-        <ul class="channel-list">
-          <li>
-            <h3>Subreddit</h3>
-            <input v-model="newStream" @keyup.enter="submitSubreddit">
-            <button @click="submitSubreddit">ADD</button>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ChannelComponent from '@/components/ChannelComponent';
+import { mapActions, mapState } from 'vuex';
+import SubredditComponent from '@/components/SubredditComponent';
 
 export default {
   name: 'HomeComponent',
-  data() {
-    return {
-      newStream: '',
-      streams: [],
-    };
-  },
   components: {
-    ChannelComponent,
+    SubredditComponent,
   },
-  methods: {
-    loadStreams() {
-      this.streams = [];
-      if (window.localStorage) {
-        const savedStreams = JSON.parse(localStorage.getItem('streams'));
-        if (Array.isArray(savedStreams)) {
-          this.streams = savedStreams;
-        } else {
-          this.saveStreams();
-        }
-      }
-    },
-    removeStream(index) {
-      this.streams.splice(index, 1);
-      this.saveStreams();
-    },
-    saveStreams() {
-      if (window.localStorage) {
-        localStorage.setItem('streams', JSON.stringify(this.streams));
-      }
-    },
-    submitSubreddit() {
-      const value = this.newStream.toLowerCase();
-      this.streams.push(value);
-      this.saveStreams();
-      this.newStream = '';
-    },
+  computed: {
+    ...mapState(['streams']),
   },
+  methods: mapActions(['loadStreams']),
   created() {
     this.loadStreams();
   },

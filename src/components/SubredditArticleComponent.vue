@@ -6,29 +6,38 @@
     <v-list-tile-content>
       <v-list-tile-title class="article-headline">
         {{ article.data.title }}
-        <span class="grey--text">({{ article.data.domain }})</span>
+        <span class="grey--text text--darken-1">({{ article.data.domain }})</span>
       </v-list-tile-title>
+
+      <v-list-tile-sub-title class="mt-2">
+        <v-row>
+          <v-col xs4>
+            <a :href="commentsLink" target="_blank" class="blue-grey--text">Comments</a>
+          </v-col>
+          <v-col xs4>
+            <a :href="userLink" target="_blank" class="blue-grey--text">/u/{{ article.data.author }}</a>
+          </v-col>
+        </v-row>
+      </v-list-tile-sub-title>
     </v-list-tile-content>
   </v-list-tile>
-  <!--<a :href="article.data.url" class="link" target="_blank">-->
-    <!--<img class="thumbnail" v-if="['default', 'self', ''].indexOf(article.data.thumbnail) === -1" :src="article.data.thumbnail" />-->
-    <!--<img class="thumbnail" v-else src="../assets/reddit-logo.png" />-->
-    <!--<span class="title">-->
-      <!--{{ article.data.title }}-->
-    <!--<span class="domain">({{ article.data.domain }})</span>-->
-    <!--</span>-->
-  <!--</a>-->
 </template>
 
 <script>
   export default {
-    name: 'ArticleComponent',
+    name: 'SubredditArticleComponent',
     props: ['article'],
     computed: {
+      commentsLink() {
+        return `https://reddit.com${this.article.data.permalink}`;
+      },
       imageSource() {
         return (['default', 'self', ''].indexOf(this.article.data.thumbnail) === -1) && this.article.data.thumbnail !== 'spoiler' ?
             this.article.data.thumbnail :
             '/static/reddit-logo.png';
+      },
+      userLink() {
+        return `https://reddit.com/u/${this.article.data.author}`;
       },
     },
   };
