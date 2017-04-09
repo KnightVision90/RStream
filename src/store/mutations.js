@@ -27,9 +27,9 @@ export const setStreams = (state, { streams }) => {
 };
 
 export const updateStream = (state, { id, name, streamType }) => {
-  const data = state.streams[id];
-  data.name = name;
-  data.streamType = streamType;
+  const data = state;
+  data.streams[id].name = name;
+  data.streams[id].streamType = streamType;
   data.newStream = '';
   data.newStreamType = state.streamTypes[0];
 };

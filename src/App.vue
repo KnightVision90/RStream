@@ -2,7 +2,7 @@
   <v-app id="app-layout" left-sidebar sidebar-under-toolbar>
     <v-toolbar>
       <v-toolbar-side-icon @click.native.stop="sidebar = !sidebar" />
-      <v-toolbar-logo>MyStream</v-toolbar-logo>
+      <v-toolbar-logo>My /r/ Stream</v-toolbar-logo>
     </v-toolbar>
     <main>
       <v-sidebar left drawer v-model="sidebar">
