@@ -12,7 +12,9 @@
       <v-list-tile-sub-title class="mt-2">
         <v-row>
           <v-col xs4>
-            <a :href="commentsLink" target="_blank" class="blue-grey--text">Comments</a>
+            <a :href="commentsLink" target="_blank" class="blue-grey--text">
+              {{ pluralizedComments }}
+            </a>
           </v-col>
           <v-col xs4>
             <a :href="userLink" target="_blank" class="blue-grey--text">/u/{{ article.data.author }}</a>
@@ -24,10 +26,15 @@
 </template>
 
 <script>
+  import pluralize from 'pluralize';
+
   export default {
     name: 'SubredditArticleComponent',
     props: ['article'],
     computed: {
+      pluralizedComments() {
+        return pluralize('Comment', this.article.data.num_comments, true);
+      },
       commentsLink() {
         return `https://reddit.com${this.article.data.permalink}`;
       },
