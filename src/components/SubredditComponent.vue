@@ -61,6 +61,9 @@
           case 'new':
             icon = 'access_time';
             break;
+          case 'rising':
+            icon = 'trending_up';
+            break;
           case 'top':
             icon = 'arrow_upward';
             break;

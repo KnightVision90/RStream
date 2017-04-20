@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const streamTypes = [
   { text: 'hot' },
   { text: 'new' },
+  { text: 'rising' },
   { text: 'top' },
 ];
 
