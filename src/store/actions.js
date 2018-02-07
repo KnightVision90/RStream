@@ -9,7 +9,7 @@ export const loadStreams = ({ commit, state }) => {
       streams = [];
       savedStreams.forEach(stream => streams.push(formatStream({ state, stream })));
     } else {
-      this.saveStreams();
+      this.saveStreams({ state });
     }
   }
   commit('setStreams', { streams });
