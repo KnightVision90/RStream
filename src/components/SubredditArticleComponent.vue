@@ -1,5 +1,5 @@
 <template>
-  <v-list-tile :href="article.data.url" target="_blank" class="article px-0 my-0" avatar>
+  <v-list-tile :href="article.data.url" target="_blank" class="article px-0 py-2 my-0" avatar>
     <v-list-tile-avatar>
       <img :src="imageSource" :alt="article.data.title" class="article-image">
     </v-list-tile-avatar>
