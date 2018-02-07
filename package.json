@@ -1,7 +1,7 @@
 {
   "name": "rstream",
   "description": "Multiple reddit streams",
-  "author": "Joseph Moran III <jmoran@clarkinc.biz>",
+  "author": "Joseph Moran III <joseph.moraniii@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
