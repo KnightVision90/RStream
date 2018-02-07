@@ -1,6 +1,5 @@
 {
   "name": "rstream",
-  "version": "1.0.0",
   "description": "Multiple reddit streams",
   "author": "Joseph Moran III <joseph.moraniii@gmail.com>",
   "private": true,
@@ -60,7 +59,7 @@
     "vue-resource": "^1.2.1",
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.2.1",
-    "vuetify": "^0.9.4",
+    "vuetify": "^0.17.7",
     "vuex": "^2.2.1",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",

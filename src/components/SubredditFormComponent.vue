@@ -1,24 +1,25 @@
 <template>
-  <v-card class="grey lighten-4 elevation-0 ma-2">
+  <v-card class="grey lighten-2 elevation-2 ma-2">
     <v-card-text>
-      <h5>{{ $route.name }}</h5>
+      <div class="headline">{{ $route.name }}</div>
       <v-container fluid>
-        <v-row row>
-          <v-col xs4 md2>
+        <v-layout row>
+          <v-flex sm4 md2 lg1>
             <v-subheader>Subreddit Name</v-subheader>
-          </v-col>
-          <v-col xs8 md10>
+          </v-flex>
+          <v-flex sm8 md10 lg11>
             <v-text-field
               v-model="newStream"
               label="Subreddit"
+              @keydown.native.enter="submitSubreddit"
             ></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row row>
-          <v-col xs4 md2>
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex sm4 md2 lg1>
             <v-subheader>Stream Type</v-subheader>
-          </v-col>
-          <v-col xs8 md10>
+          </v-flex>
+          <v-flex sm8 md10 lg11>
             <v-select
               :items="streamTypes"
               v-model="newStreamType"
@@ -26,16 +27,17 @@
               light
               single-line
               auto
+              @keydown.native.enter="submitSubreddit"
             />
-          </v-col>
-        </v-row>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-card-text>
-    <v-card-row actions>
-      <v-btn error router href="/">Go Back</v-btn>
+    <v-card-actions>
+      <v-btn color="error" router href="/">Go Back</v-btn>
       <v-spacer></v-spacer>
-      <v-btn success @click.native="submitSubreddit">Save</v-btn>
-    </v-card-row>
+      <v-btn color="success" @click.native="submitSubreddit">Save</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 

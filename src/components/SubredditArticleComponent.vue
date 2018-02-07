@@ -1,5 +1,5 @@
 <template>
-  <v-list-tile :href="article.data.url" target="_blank" class="article" avatar>
+  <v-list-tile :href="article.data.url" target="_blank" class="article px-0 my-0" avatar>
     <v-list-tile-avatar>
       <img :src="imageSource" :alt="article.data.title" class="article-image">
     </v-list-tile-avatar>
@@ -10,16 +10,16 @@
       </v-list-tile-title>
 
       <v-list-tile-sub-title class="mt-2">
-        <v-row>
-          <v-col xs4>
+        <v-layout row justify-space-between>
+          <v-flex xs6 >
             <a :href="commentsLink" target="_blank" class="blue-grey--text">
               {{ pluralizedComments }}
             </a>
-          </v-col>
-          <v-col xs4>
+          </v-flex>
+          <v-flex right xs6>
             <a :href="userLink" target="_blank" class="blue-grey--text">/u/{{ article.data.author }}</a>
-          </v-col>
-        </v-row>
+          </v-flex>
+        </v-layout>
       </v-list-tile-sub-title>
     </v-list-tile-content>
   </v-list-tile>
