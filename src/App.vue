@@ -1,10 +1,6 @@
 <template>
-  <v-app id="app-layout" left-sidebar sidebar-under-toolbar>
-    <v-toolbar>
-      <v-toolbar-side-icon @click.native.stop="sidebar = !sidebar" />
-      <v-toolbar-title>My /r/ Stream</v-toolbar-title>
-    </v-toolbar>
-    <v-navigation-drawer v-model="sidebar">
+  <v-app id="app-layout">
+    <v-navigation-drawer clipped fixed app stateless v-model="sidebar">
       <v-list dense>
         <template v-for="item in links">
           <v-list-group v-if="item.items">
@@ -32,8 +28,12 @@
         </template>
       </v-list>
     </v-navigation-drawer>
+    <v-toolbar app clipped-left fixed class="blue darken-2 white--text">
+      <v-toolbar-side-icon @click.native.stop="sidebar = !sidebar" color="white--text" />
+      <v-toolbar-title class="display-2">My /r/ Stream</v-toolbar-title>
+    </v-toolbar>
     <v-content>
-      <v-container fluid>
+      <v-container fluid class="py-1 px-0">
         <router-view></router-view>
       </v-container>
     </v-content>
