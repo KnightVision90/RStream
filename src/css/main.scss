@@ -10,6 +10,7 @@
 
     .subreddit-header {
         text-transform: capitalize;
+        text-overflow: ellipsis;
         padding: 5px 10px;
         text-decoration: none;
     }
