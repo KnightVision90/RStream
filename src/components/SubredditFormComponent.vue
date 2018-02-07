@@ -1,5 +1,5 @@
 <template>
-  <v-card class="grey lighten-2 elevation-2 ma-2">
+  <v-card class="white elevation-2 ma-2">
     <v-card-text>
       <div class="headline">{{ $route.name }}</div>
       <v-container fluid>
