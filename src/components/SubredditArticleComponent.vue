@@ -10,14 +10,13 @@
       </v-list-tile-title>
 
       <v-list-tile-sub-title class="mt-2">
-        <v-layout row>
-          <v-flex xs4>
+        <v-layout row justify-space-between>
+          <v-flex xs6 >
             <a :href="commentsLink" target="_blank" class="blue-grey--text">
               {{ pluralizedComments }}
             </a>
           </v-flex>
-          <v-spacer></v-spacer>
-          <v-flex xs4>
+          <v-flex right xs6>
             <a :href="userLink" target="_blank" class="blue-grey--text">/u/{{ article.data.author }}</a>
           </v-flex>
         </v-layout>
