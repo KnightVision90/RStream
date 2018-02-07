@@ -27,6 +27,10 @@
                 margin-top: 5px;
                 margin-bottom: 5px;
 
+                .list__tile {
+                    height: auto;
+                }
+                
                 .article-image {
                     border-radius: 0;
                     width: 50px;
@@ -34,6 +38,8 @@
                 }
 
                 .article-headline {
+                    height: auto;
+                    overflow: visible;
                     -ms-text-overflow: initial ;
                     text-overflow: initial ;
                     white-space: normal ;
