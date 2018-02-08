@@ -8,10 +8,14 @@
     box-sizing: border-box;
     padding: 0;
 
-    .subreddit-header {
+    .subreddit-header-container {
+        max-width: 40%;
         text-transform: capitalize;
         text-overflow: ellipsis;
         padding: 5px 10px;
+    }
+
+    .subreddit-header {
         text-decoration: none;
     }
 

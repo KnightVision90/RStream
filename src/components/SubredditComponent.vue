@@ -7,7 +7,7 @@
             <v-icon class="white--text pl-2">{{ streamTypeIcon }}</v-icon>
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-toolbar-title class="white--text">
+          <v-toolbar-title class="white--text subreddit-header-container">
             <a :href="subredditLink" target="_blank" class="white--text subreddit-header headline">{{ subreddit.name }}</a>
           </v-toolbar-title>
           <v-spacer></v-spacer>
