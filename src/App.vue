@@ -1,6 +1,6 @@
 <template>
   <v-app id="app-layout">
-    <v-navigation-drawer fixed disable-resize-watcher v-model="sidebar">
+    <v-navigation-drawer temporary fixed v-model="sidebar">
       <v-list dense>
         <template v-for="item in links">
           <v-list-group v-if="item.items">
