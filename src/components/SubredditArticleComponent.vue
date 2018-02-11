@@ -1,40 +1,56 @@
 <template>
-  <v-list-tile :href="article.data.url" target="_blank" class="article px-0 py-2 my-0" avatar>
+  <v-list-tile :href="article.data.url" target="_blank" class="article px-0 my-0" avatar>
     <v-list-tile-avatar>
       <img :src="imageSource" :alt="article.data.title" class="article-image">
     </v-list-tile-avatar>
-    <v-list-tile-content>
+
+    <v-list-tile-content class="px-1 py-1">
       <v-list-tile-title class="article-headline">
         {{ article.data.title }}
         <span class="grey--text text--darken-1">({{ article.data.domain }})</span>
       </v-list-tile-title>
 
-      <v-list-tile-sub-title class="mt-2">
+      <v-list-tile-sub-title class="mt-2 article-details">
         <v-layout row justify-space-between>
-          <v-flex xs6 >
-            <a :href="commentsLink" target="_blank" class="blue-grey--text">
-              {{ pluralizedComments }}
+          <v-flex class="text-xs-center" xs6>
+            <a :href="commentsLink" target="_blank" class="article-detail-link">
+              <v-icon>message</v-icon>
+              <br />
+              {{ article.data.num_comments }}
             </a>
           </v-flex>
-          <v-flex right xs6>
-            <a :href="userLink" target="_blank" class="blue-grey--text">/u/{{ article.data.author }}</a>
+          <v-flex class="text-xs-center" right xs6>
+            <a :href="userLink" target="_blank" class="article-detail-link">
+              <v-icon>person</v-icon>
+              <br />
+              {{ article.data.author }}
+            </a>
           </v-flex>
         </v-layout>
       </v-list-tile-sub-title>
     </v-list-tile-content>
+
+    <v-list-tile-action class="py-1">
+      <div class="reddit-ranking">
+        <v-icon>arrow_upward</v-icon>
+        <br>
+        {{ article.data.ups }}
+      </div>
+      <div class="reddit-ranking">
+        {{ article.data.downs }}
+        <br />
+        <v-icon>arrow_downward</v-icon>
+      </div>
+    </v-list-tile-action>
   </v-list-tile>
 </template>
 
 <script>
-  import pluralize from 'pluralize';
 
   export default {
     name: 'SubredditArticleComponent',
     props: ['article'],
     computed: {
-      pluralizedComments() {
-        return pluralize('Comment', this.article.data.num_comments, true);
-      },
       commentsLink() {
         return `https://reddit.com${this.article.data.permalink}`;
       },

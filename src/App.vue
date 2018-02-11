@@ -3,7 +3,7 @@
     <v-navigation-drawer temporary fixed v-model="sidebar">
       <v-list dense>
         <template v-for="item in links">
-          <v-list-group v-if="item.items">
+          <v-list-group v-if="item.items" :key="item">
             <v-list-tile slot="item">
               <v-list-tile-content>
                 <v-list-tile-title v-html="item.title" />
@@ -18,9 +18,9 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list-group>
-          <v-subheader v-else-if="item.header" v-text="item.header" />
-          <v-divider v-else-if="item.divider" light />
-          <v-list-tile v-else :to="item.to" >
+          <v-subheader v-else-if="item.header" v-text="item.header" :key="item" />
+          <v-divider v-else-if="item.divider" :key="item" light />
+          <v-list-tile v-else :to="item.to" :key="item" >
             <v-list-tile-content>
               <v-list-tile-title v-html="item.title" />
             </v-list-tile-content>
@@ -30,7 +30,7 @@
     </v-navigation-drawer>
     <v-toolbar app clipped-left fixed class="blue darken-2 white--text">
       <v-toolbar-side-icon @click.native.stop="sidebar = !sidebar" color="white--text" />
-      <v-toolbar-title class="display-2">My /r/ Stream</v-toolbar-title>
+      <v-toolbar-title class="display-2">/r/ Stream</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid class="py-1 px-0">
