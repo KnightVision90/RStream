@@ -36,9 +36,10 @@
                 }
                 
                 .article-image {
+                    display: block;
                     border-radius: 0;
-                    width: 50px;
-                    height: 50px;
+                    width: 48px;
+                    height: 48px;
                 }
 
                 .article-headline {
@@ -46,7 +47,17 @@
                     overflow: visible;
                     -ms-text-overflow: initial ;
                     text-overflow: initial ;
-                    white-space: normal ;
+                    white-space: normal;
+                    line-height: 14px;
+                }
+
+                .article-detail-link {
+                    text-decoration: none;
+                }
+
+                .reddit-ranking {
+                    width: 100%;
+                    text-align: center;
                 }
             }
         }

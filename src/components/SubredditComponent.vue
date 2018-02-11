@@ -32,10 +32,10 @@
         
       </v-card-title>
       <v-card-text class="article-list-container">
-        <v-list class="article-list" three-line dense>
+        <v-list class="article-list pt-2 pb-0" three-line dense>
           <template v-for="(article, index) in stream.data.children">
-            <subreddit-article-component :article="article"></subreddit-article-component>
-            <v-divider v-if="index + 1 < stream.data.children.length"></v-divider>
+            <subreddit-article-component :article="article" :key="article"></subreddit-article-component>
+            <v-divider v-if="index + 1 < stream.data.children.length" :key="article"></v-divider>
           </template>
         </v-list>
       </v-card-text>
