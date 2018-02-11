@@ -33,12 +33,10 @@
     <v-list-tile-action class="py-1">
       <div class="reddit-ranking">
         <v-icon>arrow_upward</v-icon>
-        <br>
         {{ article.data.ups }}
       </div>
       <div class="reddit-ranking">
         {{ article.data.downs }}
-        <br />
         <v-icon>arrow_downward</v-icon>
       </div>
     </v-list-tile-action>
